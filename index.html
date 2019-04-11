@@ -184,55 +184,36 @@
                 <script>
 
 
+    var launchBtn = document.getElementById("launchMe");
 
+    launchBtn.addEventListener('click', function() {
 
+        var List = document.getElementById("listHolder");
+        ingredients = List.getElementsByTagName("span");
+        unorderedList = document.createElement('ul');
 
-  /* hint=     queryselector and queryselector all*/
+        for (var ingredient of ingredients) {
+            var listitems = document.createElement('li');
+            listitems.innerText = ingredient.innerText;
+            unorderedList.appendChild(listitems);
+        }
 
+        while (ingredients[0]) {
+            List.removeChild(ingredients[0]);
+        }
 
-        var ingredients = [
-                           "pasta",
-                           "tomato Sauce",
-                           "cheese",
-                           "choose your final ingredient"
-                            ]
-        var listdiv = document.createElement('div');
+        List.appendChild(unorderedList);
 
-        document.getElementsByTagName('body')
+        var ingredient = unorderedList.lastElementChild;
 
+        unorderedList.lastElementChild.innerText = "";
 
+        var inputfield = document.createElement("input");
+        inputfield.setAttribute("type", "text");
+        inputfield.placeholder = "Choose your final ingredient";
+        unorderedList.lastElementChild.appendChild(inputfield);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    });
 
 
                     // Write your code here
@@ -254,7 +235,7 @@
                     <hr>
                     <br>
 
-                    <label>Search in this table:<input type="search" class="form-control" id="searchInput"></label>
+                    <label>Search in this table:<input type="search" class="form-control"  id="searchInput"></label>
                     <table id="searchTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                         <tr>
@@ -421,6 +402,41 @@
                     </table>
                 </div>
                 <script>
+
+   searchInput.onkeyup = function searchTable() {
+
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("searchTable");
+        tr = table.getElementsByTagName("tr");
+
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+
+
+
+
+
+
+
+
+
                     // Write your code here
                 </script>
             </div>
