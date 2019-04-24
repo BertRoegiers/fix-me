@@ -423,14 +423,32 @@
                 }
             }
         }
-    }
-
-    var checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
+    };
 
 
 
+   var table = document.getElementById("searchTable");
+   var tableHeader = table.getElementsByTagName("th");
+   var tableCount = tableHeader.length;
+   var rows = table.getElementsByTagName('tr');
 
+   for (var i = 0 ; i < tableCount ; i++) {
+       var checkbox = document.createElement("input");
+       checkbox.setAttribute("type", "checkbox");
+       tableHeader[i].appendChild(checkbox);
+       checkbox.checked = true;
+
+       checkbox.addEventListener('click', function () {
+           var posCheckbox = Array.from(table.getElementsByTagName("input")).indexOf(event.target);
+
+
+        for (var j = 0; j < table.rows.length ; j++ ){
+            var rows = table.rows[j];
+            rows.deleteCell(posCheckbox);
+             }
+           }
+       )
+   };
 
 
 
