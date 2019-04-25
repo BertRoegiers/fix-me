@@ -451,10 +451,6 @@
    };
 
 
-
-
-
-
                     // Write your code here
                 </script>
             </div>
@@ -471,6 +467,40 @@
                     <div id="moveAnimation" class="block"></div>
                 </div>
                 <script>
+
+
+    setInterval(moveDiv, 7000);
+
+    function moveDiv(){
+
+    var theDiv = document.getElementById("moveAnimation");
+
+    theDiv.style.transitionDuration = 2+"s";
+    theDiv.style.position= "relative";
+    theDiv.style.left = 100 + "%";
+
+
+    theDiv.addEventListener("transitionend", function(){
+        theDiv.style.transitionDuration = 5+"s";
+        theDiv.style.left = 0 + "%";
+
+        console.log("bert");
+            })
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     // Write your code here
                 </script>
             </div>
